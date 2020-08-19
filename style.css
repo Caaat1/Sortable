@@ -1,0 +1,56 @@
+html {
+    overflow-y: scroll;
+    user-select: none;
+}
+
+.container {
+    background-color: #00a896;
+    min-height: 90vh;
+    padding: 1em;
+}
+
+.list {
+    background: #028090;
+    border-radius: 5px;
+    margin: auto;
+    padding: 1em;
+    width: 300px;
+}
+
+.item {
+    background: #f1faee;
+    border: 1px solid #05668d;
+    border-radius: 2px;
+    cursor: pointer;
+    margin: 1em;
+    padding: 1em;
+    position: relative;
+}
+
+.item:hover {
+    background: #ffc;
+}
+
+.animated {
+    transition-duration: 1s;
+    transition-property: left, top;
+}
+
+.mseDn:hover {
+    background: #bfd1ff;
+    cursor: move;
+}
+
+.bnDragged, .bnDragged:hover {
+    background: #cfe1ff;
+    cursor: auto;
+}
+
+.moving, .moving:hover {
+    background: #ffd1d2;
+    cursor: auto;
+}
+
+.section {
+    text-align: center;
+}
