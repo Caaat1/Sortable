@@ -42,8 +42,8 @@ doc.onmousemove = e => {
 					dragged.nextElementSibling,
 				])[k]) &&
 				a.transEnded &&
-				c[i].offsetTop + c[i++].offsetHeight / 2 >
-				c[i].offsetTop + c[i].offsetHeight / 2
+				c[i].offsetTop + c[i++]	.offsetHeight / 2 >
+				c[i].offsetTop + c[i]	.offsetHeight / 2
 			) {
 				a.classList.add('moving');
 				a.style.top = `${a.offsetTop - item_Y}px`;
@@ -53,8 +53,8 @@ doc.onmousemove = e => {
 				item_Y = a.offsetTop;
 			}
 		});
-		ds.left = e.pageX - mse_Start_X + 'px';
-		ds.top = e.pageY - mse_Start_Y + item_Top + 'px';
+		ds.left = e.pageX - mse_Start_X				+ 'px';
+		ds.top	= e.pageY - mse_Start_Y + item_Top	+ 'px';
 	}
 };
 doc.onmouseup = e =>
