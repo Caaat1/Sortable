@@ -40,7 +40,7 @@ setTransDur();
 	item.onmousedown = e => {
 		isGrabbed = item.transEnded && e.which < 2;
 		if (isGrabbed) {
-			(dragged = item).isDraggin = item.classList.add((ctxMenu = md));
+			(dragged = item).isDraggin = item.classList.add((mnuOff = md));
 			item_Top = 0;
 			item_Y = item.offsetTop;
 			mse_Start_X = e.pageX;
@@ -80,9 +80,9 @@ doc.onmousemove = e => {
 doc.onmouseup = e =>
 	dragged &&
 	setTimeout(e => {
-		if (ctxMenu) ds.top = 0;
+		if (mnuOff) ds.top = 0;
 		if (dragged.isDraggin) dragged.classList.add((dragged.bnDragged = b), a);
 		dragged.classList.remove(md);
 		dragged = ds.left = isGrabbed = 0;
 	}, 10);
-doc.oncontextmenu = e => (ctxMenu = e.preventDefault());
+doc.oncontextmenu = e => (mnuOff = e.preventDefault());
