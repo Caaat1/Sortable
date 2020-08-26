@@ -1,45 +1,32 @@
-<!DOCTYPE html>
-<html lang="">
-
-<head>
-	<title>Perfect Sortable List</title>
-	<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-	<div class="container">
-
-		<div class="list">
-
-			<div class="item animated">
-				<div class="section">Pizza</div>
-			</div>
-
-			<div class="item animated">
-				<div class="section">Calzone & Stromboli</div>
-			</div>
-
-			<div class="item animated">
-				<div class="section">Starters</div>
-			</div>
-
-			<div class="item animated">
-				<div class="section">Hot Meals</div>
-			</div>
-
-			<div class="item animated">
-				<div class="section">Lenten Menu</div>
-			</div>
-
-			<div class="item animated">
-				<div class="section">Beverages</div>
-			</div>
-
+<div id="container">
+	<div id="list">
+		<div class="item animated">
+			<div class="section">Pizza</div>
 		</div>
-
+		<div class="item animated">
+			<div class="section">Calzone & Stromboli</div>
+		</div>
+		<div class="item animated">
+			<div class="section">Starters</div>
+		</div>
+		<div class="item animated">
+			<div class="section">Hot Meals</div>
+		</div>
+		<div class="item animated">
+			<div class="section">Lenten Menu</div>
+		</div>
+		<div class="item animated">
+			<div class="section">Beverages</div>
+		</div>
 	</div>
-
-	<script src="main.js"></script>
-</body>
-
-</html>
+	<form>
+		<label for="vol">Transition-duration:
+			<b id="disp_trans-dur"></b>
+		</label>
+		<input id="trans-dur" onchange="setTransDur()" type="range">
+		<div>
+			<div id="min-dur"></div>
+			<div id="max-dur"></div>
+		</div>
+	</form>
+</div>
