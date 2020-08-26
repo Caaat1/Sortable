@@ -1,0 +1,77 @@
+html {
+    overflow-y: scroll;
+    user-select: none;
+}
+
+form {
+    bottom: 2em;
+    position: sticky;
+    width: 50%;
+}
+
+input {
+    width: 100%;
+}
+
+label {
+    display: block;
+}
+
+#container {
+    background-color: #0a9;
+    min-height: 90vh;
+    padding: 1em;
+}
+
+#list {
+    background: #089;
+    border-radius: 5px;
+    margin: auto;
+    padding: 1em;
+    width: 30em;
+}
+
+.item {
+    background: #eee;
+    border: 1px solid #079;
+    border-radius: 2px;
+    cursor: pointer;
+    margin: 1em;
+    padding: 1em;
+    position: relative;
+}
+
+.item:hover {
+    background: #ffc;
+}
+
+#max-dur {
+    float: right;
+}
+
+#min-dur {
+    float: left;
+}
+
+.animated {
+    transition-property: left, top;
+}
+
+.mseDn:hover {
+    background: #cdf;
+    cursor: move;
+}
+
+.bnDragged, .bnDragged:hover {
+    background: #def;
+    cursor: auto;
+}
+
+.moving, .moving:hover {
+    background: #fdd;
+    cursor: auto;
+}
+
+.section {
+    text-align: center;
+}
