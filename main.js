@@ -9,15 +9,12 @@ const px = 'px',
 var dragged = (isGrabbed = zInd = z_base = 0),
 	w = x => window.getComputedStyle(x),
 	setTransDur = x => {
-		found = Object.values(doc.styleSheets[0].cssRules).find(
+		Object.values(doc.styleSheets[0].cssRules).find(
 			x => x.selectorText === '.' + a
-		);
-		if (found) {
-			found.style.transitionDuration = `${(tmOut = doc.querySelector(
+		).style.transitionDuration = `${(tmOut = doc.querySelector(
 				'#trans-dur'
 			).value)}s`;
-			document.getElementById('disp_trans-dur').innerText = tmOut + ' s';
-		}
+		document.getElementById('disp_trans-dur').innerText = tmOut + ' s';
 	};
 (transDur = doc.getElementById('trans-dur')).step = minDur;
 transDur.max = maxDur;
