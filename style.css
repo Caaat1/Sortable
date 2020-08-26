@@ -9,12 +9,12 @@ form {
     width: 50%;
 }
 
-input {
-    width: 100%;
-}
-
 label {
     display: block;
+}
+
+input {
+    width: 100%;
 }
 
 #container {
