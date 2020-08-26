@@ -4,7 +4,7 @@ const px = 'px',
 	m = 'moving',
 	md = 'mseDn',
 	minDur = 0.1,
-	maxDur = 10,
+	maxDur = 5,
 	doc = document;
 var dragged = (isGrabbed = zInd = z_base = 0),
 	w = x => window.getComputedStyle(x),
@@ -22,7 +22,7 @@ var dragged = (isGrabbed = zInd = z_base = 0),
 (transDur = doc.getElementById('trans-dur')).step = minDur;
 transDur.max = maxDur;
 transDur.min = minDur;
-transDur.value = (maxDur - minDur) / 2;
+transDur.value = (maxDur - minDur) / 3;
 doc.getElementById('min-dur').innerText = minDur;
 doc.getElementById('max-dur').innerText = maxDur;
 setTransDur();
