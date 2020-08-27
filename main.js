@@ -15,12 +15,10 @@ var dragged = (isGrabbed = zInd = z_base = 0),
 		).style.transitionDuration = document.getElementById(
 			"disp_trans-dur"
 		).innerText = `${(tmOut = transDur.value)}s`);
-transDur.max = maxDur;
-transDur.min = minDur;
+transDur.max = doc.getElementById("max-dur").innerText = maxDur;
+transDur.min = doc.getElementById("min-dur").innerText = minDur;
 transDur.step = minDur;
 transDur.value = (maxDur - minDur) / 4;
-doc.getElementById("min-dur").innerText = minDur;
-doc.getElementById("max-dur").innerText = maxDur;
 setTransDur();
 (Items = [
 	...(List = doc.querySelector("#list")).getElementsByClassName("item")
@@ -59,10 +57,9 @@ doc.onmousemove = (e) => {
 					dragged.previousElementSibling,
 					dragged,
 					dragged.nextElementSibling
-				])[k]) &&
+				])[k]) && x.transEnded &&
 				c[i].offsetTop + c[i++].offsetHeight / 2 >
-				c[i].offsetTop + c[i].offsetHeight / 2 &&
-				x.transEnded
+				c[i].offsetTop + c[i].offsetHeight / 2
 			) {
 				x.classList.add(m);
 				x.style.top = x.offsetTop - item_Y + px;
