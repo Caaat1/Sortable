@@ -7,7 +7,7 @@ const px = 'px',
 	maxDur = 5,
 	doc = document,
 	transDur = doc.getElementById('trans-dur');
-var dc, ds, isGrabbed = (zInd = z_base = 0),
+var ds, isGrabbed = (zInd = z_base = 0),
 	gCS = x => window.getComputedStyle(x),
 	setTransDur = () =>
 		(Object.values(doc.styleSheets[0].cssRules).find(
@@ -51,16 +51,15 @@ doc.onmousemove = e => {
 		}
 		[0, 2].forEach((k, i) => {
 			if (
-					(x = (
-						c = [
-							dragged.previousElementSibling,
-							dragged,
-							dragged.nextElementSibling
-						]
-					)[k--]) &&
-					x.transEnded &&
-					c[i].offsetTop + (c[i++].offsetHeight - c[i].offsetHeight) / 2 > c[i].offsetTop
-				) {
+				(x = (
+					c = [
+						dragged.previousElementSibling,
+						dragged,
+						dragged.nextElementSibling
+					]
+				)[k--]) && x.transEnded &&
+				c[i].offsetTop + (c[i++].offsetHeight - c[i].offsetHeight) / 2 > c[i].offsetTop
+			) {
 				oHmT = x => (x.offsetHeight + parseFloat(gCS(x).marginTop)) * k;
 				List.insertBefore(c[i], c[--i]);
 				x.style.top = oHmT(dragged) + px;
@@ -70,7 +69,7 @@ doc.onmousemove = e => {
 			}
 		});
 		ds.left = e.pageX - mse_Start_X + px;
-		ds.top = e.pageY - mse_Start_Y + dragged.top + px;
+		ds.top	= e.pageY - mse_Start_Y + dragged.top + px;
 	}
 };
 doc.onmouseup = () =>
