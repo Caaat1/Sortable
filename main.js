@@ -9,7 +9,7 @@ const px = "px",
 	transDur = doc.getElementById("trans-dur");
 var dragged = (isGrabbed = zInd = z_base = 0),
 	w = (x) => window.getComputedStyle(x),
-	setTransDur = (x) =>
+	setTransDur = () =>
 		(Object.values(doc.styleSheets[0].cssRules).find(
 			(x) => x.selectorText === "." + a
 		).style.transitionDuration = document.getElementById(
@@ -26,7 +26,7 @@ setTransDur();
 	...(List = doc.querySelector("#list")).getElementsByClassName("item")
 ]).forEach((item) => {
 	item.transEnded = 1;
-	item.ontransitionend = (e) => {
+	item.ontransitionend = () => {
 		item.style.removeProperty((item.transEnded = "top"));
 		item.classList.remove(b, m);
 		if (item.bnDragged) {
