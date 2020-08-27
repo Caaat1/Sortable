@@ -1,84 +1,84 @@
-const px = "px",
-	a = "animated",
-	b = "bnDragged",
-	m = "moving",
-	md = "mseDn",
+const px = 'px',
+	a = 'animated',
+	b = 'bnDragged',
+	m = 'moving',
+	md = 'mseDn',
 	minDur = 0.1,
 	maxDur = 5,
 	doc = document,
-	transDur = doc.getElementById("trans-dur");
-var dragged = (isGrabbed = zInd = z_base = 0),
-	w = (x) => window.getComputedStyle(x),
+	transDur = doc.getElementById('trans-dur');
+var dc, ds, isGrabbed = (zInd = z_base = 0),
+	gCS = x => window.getComputedStyle(x),
 	setTransDur = () =>
 		(Object.values(doc.styleSheets[0].cssRules).find(
-			(x) => x.selectorText === "." + a
-		).style.transitionDuration = document.getElementById(
-			"disp_trans-dur"
+			x => x.selectorText === '.' + a
+		).style.transitionDuration = doc.getElementById(
+			'disp_trans-dur'
 		).innerText = `${(tmOut = transDur.value)}s`);
-transDur.max = doc.getElementById("max-dur").innerText = maxDur;
-transDur.min = doc.getElementById("min-dur").innerText = minDur;
-transDur.step = minDur;
-transDur.value = (maxDur - minDur) / 4;
+transDur.max = doc.getElementById('max-dur').innerText = maxDur;
+transDur.min = transDur.step = doc.getElementById('min-dur').innerText = minDur;
+transDur.value = maxDur / 4;
 setTransDur();
 (Items = [
-	...(List = doc.querySelector("#list")).getElementsByClassName("item")
-]).forEach((item) => {
+	...(List = doc.getElementById('list')).getElementsByClassName('item')
+]).forEach(item => {
 	item.transEnded = 1;
 	item.ontransitionend = () => {
-		item.style.removeProperty((item.transEnded = "top"));
+		item.style.removeProperty(item.transEnded = 'top');
 		item.classList.remove(b, m);
 		if (item.bnDragged) {
 			zInd -= zInd > z_base;
 			item.bnDragged = Items.forEach(
-				(x) => (x.style.zIndex = w(x).zIndex - (w(x).zIndex > z_base))
+				x => x.style.zIndex = gCS(x).zIndex - (gCS(x).zIndex > z_base)
 			);
 		}
 	};
-	item.onmousedown = (e) => {
-		isGrabbed = item.transEnded && e.which < 2;
+	item.onmousedown = e => {
+		isGrabbed = (dt = item.transEnded) && e.which < 2;
 		if (isGrabbed) {
-			(dragged = item).isDraggin = item.classList.add((mnuOff = md));
-			item_Top = 0;
-			item_Y = item.offsetTop;
+			dd = (dragged = item).isDraggin = (dc = item.classList).add((mnuOff = md));
+			dragged.top = 0;
 			mse_Start_X = e.pageX;
 			mse_Start_Y = e.pageY;
 		}
 	};
 });
-doc.onmousemove = (e) => {
+doc.onmousemove = e => {
 	if (isGrabbed) {
-		if (!dragged.isDraggin) {
+		if (!dd) {
 			(ds = dragged.style).zIndex = ++zInd;
-			dragged.transEnded = dragged.classList.remove((dragged.isDraggin = a));
+			dt = dc.remove((dd = a));
 		}
 		[0, 2].forEach((k, i) => {
 			if (
-				(x = (c = [
-					dragged.previousElementSibling,
-					dragged,
-					dragged.nextElementSibling
-				])[k]) && x.transEnded &&
-				c[i].offsetTop + c[i++].offsetHeight / 2 >
-				c[i].offsetTop + c[i].offsetHeight / 2
-			) {
-				x.classList.add(m);
-				x.style.top = x.offsetTop - item_Y + px;
+					(x = (
+						c = [
+							dragged.previousElementSibling,
+							dragged,
+							dragged.nextElementSibling
+						]
+					)[k--]) &&
+					x.transEnded &&
+					c[i].offsetTop + (c[i++].offsetHeight - c[i].offsetHeight) / 2 > c[i].offsetTop
+				) {
+				oHmT = x => (x.offsetHeight + parseFloat(gCS(x).marginTop)) * k;
 				List.insertBefore(c[i], c[--i]);
-				item_Top -= (x.offsetHeight + parseFloat(w(x).marginBottom)) * --k;
-				x.transEnded = x.style.top = 0;
-				item_Y = x.offsetTop;
+				x.style.top = oHmT(dragged) + px;
+				x.classList.add(m);
+				dragged.top -= oHmT(x);
+				x.style.top = x.transEnded = 0;
 			}
 		});
 		ds.left = e.pageX - mse_Start_X + px;
-		ds.top = e.pageY - mse_Start_Y + item_Top + px;
+		ds.top = e.pageY - mse_Start_Y + dragged.top + px;
 	}
 };
-doc.onmouseup = (e) =>
+doc.onmouseup = () =>
 	dragged &&
-	setTimeout((e) => {
+	setTimeout(() => {
 		if (mnuOff) ds.top = 0;
-		if (dragged.isDraggin) dragged.classList.add((dragged.bnDragged = b), a);
-		dragged.classList.remove(md);
+		if (dd) dc.add((dragged.bnDragged = b), a);
+		dc.remove(md);
 		dragged = ds.left = isGrabbed = 0;
 	}, 10);
-doc.oncontextmenu = (e) => (mnuOff = e.preventDefault());
+doc.oncontextmenu = e => mnuOff = e.preventDefault();
