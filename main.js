@@ -68,7 +68,7 @@ doc.onmousemove = e =>
 			(ds.top = e.pageY - mse_Start_Y + px)) :
 		(ds.zIndex = zInd += bnDragged =
 			dc.remove(an) ||
-			Math.abs(e.pageX - mse_Start_X) + Math.abs(e.pageY - mse_Start_Y) > 2));
+			Math.abs(e.pageX - mse_Start_X) + Math.abs(e.pageY - mse_Start_Y) > 1));
 doc.onmouseup = () =>
 	dragged &&
 	setTimeout(() => {
